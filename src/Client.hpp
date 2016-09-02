@@ -19,7 +19,7 @@ namespace etcd
      * Constructs an etcd client object.
      * @param etcd_url is the url of the etcd server to connect to, like "http://127.0.0.1:4001"
      */
-    Client(std::string const & etcd_url);
+    Client(std::string const & etcd_url, std::string username = "", std::string password = "");
 
     /**
      * Sends a get request to the etcd server
@@ -131,7 +131,10 @@ namespace etcd
     pplx::task<Response> send_del_request(web::http::uri_builder & uri);
     pplx::task<Response> send_put_request(web::http::uri_builder & uri, std::string const & key, std::string const & value);
 
-    web::http::client::http_client client;
+    utility::string_t auth_str;
+    //web::http::client::http_client client;
+    std::shared_ptr<web::http::client::http_client> client;
+    std::shared_ptr<web::http::client::http_client> watch_client;
   };
 }
 

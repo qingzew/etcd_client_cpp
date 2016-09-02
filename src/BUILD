@@ -11,9 +11,11 @@ cc_library(
     copts = [
     ],
     includes = [
-        '.',
     ],
     linkopts = [
+        '-lssl', 
+        '-lboost_system',
+        '-lcrypto',
         '-lcpprest',
     ],
     deps = [
@@ -30,7 +32,6 @@ cc_binary(
     copts = [
     ],
     includes = [
-        '.',
     ],
     linkopts = [
         '-lssl',

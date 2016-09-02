@@ -9,8 +9,6 @@
 #include "src/Client.hpp"
 
 TEST(EtcdTest, Setup) {
-    etcd::Client etcd("http://127.0.0.1:4001");
-    etcd.rmdir("/test", true).wait();
 }
 
 
